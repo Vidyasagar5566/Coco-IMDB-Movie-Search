@@ -1,5 +1,6 @@
-// movies.js
+
 const Search = document.querySelector(".search-input input");
+
 // Function to display movies on the page
 function displayMovies(moviesData) {
     const moviesContainer = document.getElementById("moviesContainer");
@@ -14,7 +15,7 @@ function displayMovies(moviesData) {
         movieItem.innerHTML = `
         <div class="movie-card">
             <div class="movie-name">${movie.Title}</div>
-            <div class="movie-name">${movie.Year}</div>
+            <div class="movie-name">(${movie.Year})</div>
             <img class="movie-image" src="${movie.Poster}">
           </div>
         `;
@@ -26,23 +27,33 @@ function displayMovies(moviesData) {
 }
 
 // Function to fetch movies from the API and store in local storage
-function fetchAndStoreMovies() {
+function fetchAndStoreMovies(page) {
 
     var text = document.getElementById('input-search').value;
     if (!text){
-        text = "got";
+        text = "hello";
     }
     document.getElementById('input-search').textContent = text;
-    document.getElementById('Search-for').textContent = "Searched for " + text + " Movie Name";
+    document.getElementById('page').textContent = page;
+    document.getElementById('movie-name').textContent = "Results of  ' " + text + " '  Movie name";
 
-    var url = "https://www.omdbapi.com/?s=" + text + "&apikey=7a75dd33&page=" + "1";
+    var url = "https://www.omdbapi.com/?s=" + text + "&apikey=7a75dd33&page=" + page;
     fetch(url)
         .then(response => response.json())
         .then(data => {
+            if (data.Response == "False"){
+                document.getElementById('movie-found').textContent = "Movies Not Found With This Name"
+            }
+            else {
+                document.getElementById('movie-found').textContent = "";
+            }
             console.log(data);
             // Store the movie data in local storage
             localStorage.setItem("moviesData", JSON.stringify(data));
 
+            document.getElementById('total-pages').textContent = "total pages = " + parseInt(data.totalResults / 10);
+
+            document.getElementById('intro-pages').textContent = "(use input buttons to increse or decrease the page number)";
             // Display the movies on the page
             displayMovies(data);
         })
@@ -113,4 +124,13 @@ function showMoviePage(movie) {
 }
 
 // Check if movie data is available in local storage
-fetchAndStoreMovies();
+var page = "1";
+const submitPageButton = document.getElementById("page");
+const pageInput = document.getElementById("page");
+submitPageButton.addEventListener("click", () => {
+    const page = parseInt(pageInput.value); 
+    fetchAndStoreMovies(page);
+})
+fetchAndStoreMovies(page);
+
+

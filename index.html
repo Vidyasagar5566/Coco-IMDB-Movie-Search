@@ -10,12 +10,23 @@
 </head>
 <body>
 
-    <h1 style="color: white;margin-left: 36%;">IMDB MOVIES LIST</h1>
+    <h1 style="text-align: center;color: white;">IMDB MOVIES LIST</h1>
     <div class="search-bar-container">
         <i class="search-icon">🔍</i>
-        <input class="search-input" type="text" placeholder="Search..." id = "input-search">
-        <button class="search-button" onclick="fetchAndStoreMovies()">Search</button>
+        <input class="search-input" type="text" placeholder="Search other names....." id = "input-search">
+        <button class="search-button" onclick="fetchAndStoreMovies('1')">Search</button>
     </div>
+    <h1 style="color: black;text-align: center;margin: 20px;" id = "movie-name"></h1>
+    <section class = "page_details">
+        <label for="rating">Selected Page</label>
+        <input type="number" id="page" min="1" max="500" value = "1">
+        <h3 id = "intro-pages" style="text-align: center;"></h3>
+        <h3 id = "total-pages" style="text-align: center;"></h3>
+    </section>
+
+    <h1 style="color: white;text-align: center;margin: 20px;" id = "movie-found"></h1>
+    
+    
 
 
     <h1 style="color: black;text-align: center;margin:20px;" id = "Search-for"></h1>
