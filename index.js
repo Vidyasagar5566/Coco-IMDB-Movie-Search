@@ -9,7 +9,7 @@ function displayMovies(moviesData) {
 
     movieData.forEach(movie => {
         movie.comments = [];
-        movie.rating = "";
+        movie.rating = 1;
         const movieItem = document.createElement("li");
         movieItem.classList.add("movie-item");
         movieItem.innerHTML = `
@@ -19,7 +19,7 @@ function displayMovies(moviesData) {
             <img class="movie-image" src="${movie.Poster}">
           </div>
         `;
-        movieItem.addEventListener("click", () => showMoviePage(movie));
+        movieItem.addEventListener("click", () => showMoviePage(movie,moviesData));
         moviesContainer.appendChild(movieItem);
     });
 
@@ -63,7 +63,7 @@ function fetchAndStoreMovies(page) {
 }
 
 // Function to show individual movie page with comments and rating
-function showMoviePage(movie) {
+function showMoviePage(movie,moviesData) {
     const individualMoviePage = document.getElementById("individualMoviePage");
     const movieTitleElement = document.getElementById("movieTitle");
     const movieYearElement = document.getElementById("movieYear");
@@ -84,6 +84,7 @@ function showMoviePage(movie) {
     });
 
     // Handle submit button click to add a new comment and rating
+    ratingInput.textContent = movie.rating;
     const submitCommentButton = document.getElementById("submitComment");
     submitCommentButton.addEventListener("click", () => {
         const newRating = parseInt(ratingInput.value);
@@ -99,16 +100,15 @@ function showMoviePage(movie) {
         }
 
         // Save the updated movie data back to local storage
-        const movieData = JSON.parse(localStorage.getItem("moviesData")) || [];
+        const movieData = JSON.parse(localStorage.getItem("moviesData")).Search || [];
         const updatedMovieData = movieData.map(dataMovie => (dataMovie.id === movie.id ? movie : dataMovie));
-        localStorage.setItem("moviesData", JSON.stringify(updatedMovieData));
+        localStorage.setItem("moviesData", JSON.stringify({Search:updatedMovieData,totalResults:moviesData.totalResults}));
 
         // Clear input fields
-        ratingInput.value = "";
         commentInput.value = "";
 
         // Re-render the movie page to show updated rating and comments
-        showMoviePage(movie);
+        showMoviePage(movie,moviesData);
     });
 
     // Handle "Go Back" button click to go back to the movie list
@@ -116,6 +116,7 @@ function showMoviePage(movie) {
     goBackButton.addEventListener("click", () => {
         individualMoviePage.style.display = "none";
         document.getElementById("moviesContainer").style.display = "block";
+        //displayMovies(moviesData);
     });
 
     //Display the individual movie page and hide the movie list
