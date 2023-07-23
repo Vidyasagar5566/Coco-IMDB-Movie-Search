@@ -35,7 +35,7 @@ function fetchAndStoreMovies() {
     document.getElementById('input-search').textContent = text;
     document.getElementById('Search-for').textContent = "Searched for " + text + " Movie Name";
 
-    var url = "http://www.omdbapi.com/?s=" + text + "&apikey=7a75dd33&page=" + "1";
+    var url = "https://www.omdbapi.com/?s=" + text + "&apikey=7a75dd33&page=" + "1";
     fetch(url)
         .then(response => response.json())
         .then(data => {
