@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link href="index.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+    <h1 style="color: white;margin-left: 36%;">IMDB MOVIES LIST</h1>
+    <div class="search-bar-container">
+        <i class="search-icon">🔍</i>
+        <input class="search-input" type="text" placeholder="Search..." id = "input-search">
+        <div class="individual-movie-rating">
+            <label for="rating">Page</label>
+            <input type="number" id="rating" min="1" max="10">
+        </div>
+        <button class="search-button" onclick="fetchAndStoreMovies()">Search</button>
+    </div>
+
+
+    <h1 style="color: black;text-align: center;margin:20px;" id = "Search-for"></h1>
+
+
+    <ul class="movie-list" id = "moviesContainer"></ul>
+
+    <div class="individual-movie" id="individualMoviePage">
+        <h2 id="movieTitle"></h2>
+        <p id="movieYear"></p>
+        <div class="individual-movie-rating">
+            <label for="rating">Rate this movie (1-5):</label>
+            <input type="number" id="rating" min="1" max="5">
+        </div>
+        <div class="individual-movie-comments">
+            <h3>Comments:</h3>
+            <ul id="commentsContainer"></ul>
+            <textarea id="comment" rows="4" cols="50" placeholder="Add your comment"></textarea>
+            <button id="submitComment">Submit</button>
+        </div>
+        <button id="goBack">Go Back</button>
+    </div>
+
+</body>
+</html>

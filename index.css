@@ -1,0 +1,141 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #4AB1FF, #2D5CFE);
+    overflow: auto;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 340px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-left: 34%;
+}
+
+.search-icon {
+    margin-right: 10px;
+    color: #999;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 200px;
+    background: transparent;
+    border-radius: 30px;
+    padding: 8px 12px;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-button {
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+/* Movie List Styles */
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.movie-item {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.movie-item:hover {
+    transform: scale(0.9);
+}
+
+/* Individual Movie Page Styles */
+.individual-movie {
+    margin-top: 100px;;
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.individual-movie h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.individual-movie-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.individual-movie-rating label {
+    margin-right: 10px;
+}
+
+.individual-movie-comments {
+    margin-bottom: 10px;
+}
+
+.individual-movie-comments h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.individual-movie-comments li {
+    margin-bottom: 5px;
+}
+
+.movie-card {
+    width: 93%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.movie-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.movie-image {
+    width: 100%;
+    overflow: auto;
+    border-radius: 5px;
+}
+.movies-box {
+    margin: 0px;
+}
